@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style type="text/css">
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <form>
+
+        <p>
+            <label>User name</label>
+            <input type="text" name="username" id="txtUsername" onblur="txt_Validate(this, 'error_txtUsername')" onkeyup="txt_Validate(this, 'error_txtUsername')" />
+            <span class="error" id="error_txtUsername" style="display:none;">Pelase enter username</span>
+        </p>
+        <p>
+            <label>Password</label>
+            <input type="password" name="password" id="txtPassword" onblur="txt_Validate(this, 'error_txtPassword')" />
+            <span class="error" id="error_txtPassword" style="display:none;">Pelase enter password</span>
+        </p>
+        <p>
+            <label>Confirm Password</label>
+            <input type="password" name="confirmpassword" id="txtConfirmPassword" onblur="txt_Validate(this, 'error_txtConfirmPassword'); compareCtrls(this, 'txtPassword', 'error_txtConfirmPassword_2')" />
+            <span class="error">
+                <span id="error_txtConfirmPassword" style="display:none;">Pelase enter confirm password</span>
+                <span id="error_txtConfirmPassword_2" style="display:none;">Password and confirm password don't match</span>
+            </span>
+        </p>
+        <p>
+            <label>Email Address</label>
+            <input type="text" name="emailAddress" id="txtEmailAddress" onblur="txt_Validate(this,  'error_txtEmailAddress'); checkEmailAddress(this, 'error_txtEmailAddress_2')" />
+            <span class="error">
+                <span id="error_txtEmailAddress" style="display:none;">Pelase enter email address</span>
+                <span id="error_txtEmailAddress_2" style="display:none;">Pelase enter a valid email address</span>
+            </span>
+        </p>
+        <p>
+            <label>Phone number</label>
+            <input type="text" name="phoneNumber" id="txtPhoneNumber" onblur="txt_Validate(this, 'error_txtPhoneNumber')" />
+            <span class="error" id="error_txtPhoneNumber" style="display:none;">Pelase enter phone number</span>
+        </p>
+        <p>
+            <button type="button" onclick="btnRegister_Click()">
+                Register
+            </button>
+        </p>
+
+    </form>
+
+    <script type="text/javascript">
+
+        function compareCtrls(ref, otherCtrl, errorId) {
+            if (ref.value == document.getElementById(otherCtrl).value) {
+                document.getElementById(errorId).style.display = "none";
+            }
+            else {
+                document.getElementById(errorId).style.display = "";
+            }
+        }
+
+        function checkEmailAddress(ref, errorId) {
+            if (ref.value != "") {
+                var exp = /^(([^<>()\[\]\\.,;:\s@" ]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                if (exp.test(ref.value)) {
+                    document.getElementById(errorId).style.display = "none";
+                }
+                else {
+                    document.getElementById(errorId).style.display = "";
+                }
+            }
+        }
+
+        function txt_Validate(ref, errorId) {
+            if (ref.value == "") {
+                document.getElementById(errorId).style.display = "";
+            }
+            else {
+                document.getElementById(errorId).style.display = "none";
+            }
+        }
+
+        function btnRegister_Click() {
+            if (document.getElementById("txtUsername").value == "") {
+                document.getElementById("error_txtUsername").style.display = "";
+            }
+            else {
+                document.getElementById("error_txtUsername").style.display = "none";
+            }
+
+            if (document.getElementById("txtPassword").value == "") {
+                document.getElementById("error_txtPassword").style.display = "";
+            }
+            else {
+                document.getElementById("error_txtPassword").style.display = "none";
+            }
+
+            if (document.getElementById("txtConfirmPassword").value == "") {
+                document.getElementById("error_txtConfirmPassword").style.display = "";
+            }
+            else {
+                document.getElementById("error_txtConfirmPassword").style.display = "none";
+            }
+
+            if (document.getElementById("txtEmailAddress").value == "") {
+                document.getElementById("error_txtEmailAddress").style.display = "";
+            }
+            else {
+                document.getElementById("error_txtEmailAddress").style.display = "none";
+            }
+
+            if (document.getElementById("txtPhoneNumber").value == "") {
+                document.getElementById("error_txtPhoneNumber").style.display = "";
+            }
+            else {
+                document.getElementById("error_txtPhoneNumber").style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style type="text/css">
+        table {
+            margin: 0 5px 5px 0;
+            float: left;
+        }
+
+        table, td {
+            border: 1px solid #000;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+
+    <script type="text/javascript">
+
+        var m = prompt("Please enter a number");
+
+        if (isNaN(m)) {
+            alert("Please enter a valid number");
+            location.reload();
+        }
+        else {
+
+            for (var k = 1; k <= m; k++) {
+                document.write("<table>");
+                for (var i = 1; i <= 10; i++) {
+                    document.write("<tr><td>" + k + "</td><td>*</td><td>" + i + "</td><td>=</td><td>" + k * i + "</td></tr>");
+                }
+                document.write("</table>");
+            }
+        }
+    </script>
+
+
+</body>
+</html>
